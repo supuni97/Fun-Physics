@@ -40,5 +40,50 @@
   {
     "img": "img/userProfile.jpg"
   }
+  ],
+  "Badges": [
+    {
+      "img": "img/gameGallery/gameGallery1.jpg",
+      "name": "Game 1",
+      "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
+    },
+    {
+      "img": "img/gameGallery/gameGallery2.jpg",
+      "name": "Game 2",
+      "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
+    },
+    {
+      "img": "img/gameGallery/gameGallery3.jpg",
+      "name": "Game 3",
+      "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
+    },
+    {
+      "img": "img/gameGallery/gameGallery5.jpg",
+      "name": "Game 4",
+      "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
+    },
+    {
+      "img": "img/gameGallery/gameGallery1.jpg",
+      "name": "Game 1",
+      "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
+    },
+    {
+      "img": "img/gameGallery/gameGallery2.jpg",
+      "name": "Game 2",
+      "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
+    },
+    {
+      "img": "img/gameGallery/gameGallery3.jpg",
+      "name": "Game 3",
+      "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
+    },
+    {
+      "img": "img/gameGallery/gameGallery5.jpg",
+      "name": "Game 4",
+      "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
+    }
+  ],
+  "Preferences":[
+    "Linear Motion", "Circuilar Motion", "Projectiles"
   ]
 }
