@@ -51,7 +51,7 @@ export const Navigation = (props) => {
             </li>
             
             <li>
-              <a style={{color:"bisque"}} className="page-scroll">
+              <a style={{color:"bisque"}} href="/login" className="page-scroll">
                 Login
               </a>
             </li>
