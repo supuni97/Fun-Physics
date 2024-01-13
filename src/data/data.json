@@ -44,42 +44,42 @@
   "Badges": [
     {
       "img": "img/gameGallery/gameGallery1.jpg",
-      "name": "Game 1",
+      "name": "Witchet 3 Wild Hunt",
       "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
     },
     {
       "img": "img/gameGallery/gameGallery2.jpg",
-      "name": "Game 2",
+      "name": "Red Dead Redemption 2",
       "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
     },
     {
       "img": "img/gameGallery/gameGallery3.jpg",
-      "name": "Game 3",
+      "name": "Horizon Zero Dawn",
       "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
     },
     {
       "img": "img/gameGallery/gameGallery5.jpg",
-      "name": "Game 4",
+      "name": "Baldur's Gate 3",
       "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
     },
     {
       "img": "img/gameGallery/gameGallery1.jpg",
-      "name": "Game 1",
+      "name": "Far Cry 6",
       "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
     },
     {
       "img": "img/gameGallery/gameGallery2.jpg",
-      "name": "Game 2",
+      "name": "Elden Ring",
       "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
     },
     {
       "img": "img/gameGallery/gameGallery3.jpg",
-      "name": "Game 3",
+      "name": "Doom 3 Iternal",
       "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
     },
     {
       "img": "img/gameGallery/gameGallery5.jpg",
-      "name": "Game 4",
+      "name": "Legend of Zelda: Tears of the Kingdom",
       "desc": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend "
     }
   ],
