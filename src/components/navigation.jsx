@@ -33,6 +33,11 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
+              <a style={{color:"bisque"}} href="#intro" className="page-scroll">
+                Why
+              </a>
+            </li>
+            <li>
               <a style={{color:"bisque"}} href="#ab" className="page-scroll">
                 About
               </a>

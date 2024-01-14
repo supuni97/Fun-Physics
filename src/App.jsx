@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
+import {Intro} from "./components/intro";
 import { Ab } from "./components/ab";
 import { Contact } from "./components/contact";
 import { Features } from "./components/features";
@@ -44,6 +45,7 @@ const App = () => {
               <Navigation />
               <Header data={landingPageData.Header} />
               <Ab data={landingPageData.Ab} />
+              <Intro data={landingPageData.Intro} />
               <Features data={landingPageData.Features} />
               <Gallery data={landingPageData.Gallery} />
               <Contact data={landingPageData.Contact} />
