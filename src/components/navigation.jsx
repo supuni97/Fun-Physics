@@ -32,11 +32,7 @@ export const Navigation = (props) => {
                 Home
               </a>
             </li>
-            <li>
-              <a style={{color:"bisque"}} href="#intro" className="page-scroll">
-                Why
-              </a>
-            </li>
+           
             <li>
               <a style={{color:"bisque"}} href="#ab" className="page-scroll">
                 About
@@ -46,12 +42,6 @@ export const Navigation = (props) => {
             <li>
               <a style={{color:"bisque"}} href="#team" className="page-scroll">
                 Game Gallery
-              </a>
-            </li>
-      
-            <li>
-              <a style={{color:"bisque"}} href="#contact" className="page-scroll">
-                Contact
               </a>
             </li>
             

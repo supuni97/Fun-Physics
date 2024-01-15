@@ -4,7 +4,7 @@ import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import {Intro} from "./components/intro";
 import { Ab } from "./components/ab";
-import { Contact } from "./components/contact";
+import { Feedback } from "./components/feedback";
 import { Features } from "./components/features";
 import { Gallery } from "./components/gallery";
 import JsonData from "./data/data.json";
@@ -15,6 +15,7 @@ import "./App.css";
 import { ProfileCard } from "./components/profileCard";
 import "./components/style.css";
 import Board from "./components/board";
+import { Footer } from "./components/footer";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -50,7 +51,7 @@ const App = () => {
               <Intro data={landingPageData.Intro} />
               <Features data={landingPageData.Features} />
               <Gallery data={landingPageData.Gallery} />
-              <Contact data={landingPageData.Contact} />
+              <Footer data={landingPageData.Footer} />
     </div>
           }
         />
@@ -58,6 +59,8 @@ const App = () => {
         <Route path="/signup" element={<Signup onSignup={handleSignup} />} />
         <Route path="/profile" element={<ProfileCard data={landingPageData.Profile}/>}/>
         <Route path="/leaderBoard" element={<Board />} />
+        <Route path="/feedback" element={<Feedback />} />
+    
       </Routes>
     </Router>
   );

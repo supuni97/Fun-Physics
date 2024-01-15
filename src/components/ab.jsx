@@ -1,55 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const Ab = (props) => {
+  const [showParagraph, setShowParagraph] = useState(false);
+
+  const handleToggleClick = () => {
+    setShowParagraph(!showParagraph);
+  };
+
   return (
     <div id="ab" style={{ backgroundColor: "bisque" }} className="text-center">
       <div className="container">
         <div className="col-md-10 col-md-offset-1 section-title">
-          <h3 style={{
-            color: "brown", // Font color (replace with your preferred color code)
-            fontFamily: 'Arial, sans-serif', // Font family (replace with your preferred font)
-            fontSize: '24px', // Font size (replace with your preferred size)
+          <h2 style={{
+            color: "brown",
+            fontFamily: 'Arial, sans-serif',
+            fontSize: '24px',
             fontWeight: 'bold'
-          }}>Little More About Us</h3>
+          }}>Little More About Us</h2>
+          <img
+              src="img/about/aboutUs.jpg"
+              alt="Logo"
+              style={{ borderRadius: "50%",height:"300px", marginBottom: "5px",marginTop:"20px" }}
+            />
         </div>
-        <div>
-
-          <div className="columns">
-            <div className="col-xs-8 col-md-8">
-
-              <h2 style={{
-                color: "#F39C5F", // Font color (replace with your preferred color code)
-                fontSize: '28px', // Font size (replace with your preferred size)
-                fontWeight: 'bold'
-              }}>Unlock the Power of Playful Learning: Dive into a World of Physics Adventures with Fun Physics, Where Learning Meets Fun</h2>
-              <p
-                style={{
-                  color: "black", // Font color (replace with your preferred color code)
-                  fontSize: '18px', // Font size (replace with your preferred size)
-
-                }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <a
-                href="#features"
-                style={{
-                  background: 'linear-gradient(to left, #ff5733, #ffcc33)', // Gradient from orange to yellow
-                  color: '#ffffff', // Text color
-                  padding: '10px 20px',
-                  marginBottom:"30px"
-                }}
-                className="btn btn-custom btn-lg page-scroll" 
-              >
-                Read More
-              </a>{" "}
-            </div>
-            <div className="col-xs-3 col-md-4">
-              <img
-                src="img/about/aboutUs.jpg"
-                alt="Logo"
-                className="img-responsive"
-                style={{ borderRadius: "50%", height: "50vh",marginBottom:"100px"}}
-              />
-            </div>
+        
+        <div className="columns">
+          <div className>
+            <h3 style={{
+              color: "#F39C5F",
+              fontSize: '28px',
+              fontWeight: 'bolder'
+            }}>Unlock the Power of Playful Learning: Dive into a World of Physics Adventures with Fun Physics, Where Learning Meets Fun</h3>
+<p style={{ color: "black", fontSize: '16px', marginBottom: "30px",fontWeight:"bold" }}>
+                Fun Physics, an innovative hub where education is redefined. Our platform empowers students with cutting-edge technology, engaging content, and personalized feedback, creating a holistic learning experience.
+                </p>
+            {/* Display the paragraph conditionally */}
+            {showParagraph && (
+              <>
+                <p style={{ color: "black", fontSize: '16px', marginBottom: "30px",fontWeight:"bold" }}>
+                From interactive games to advanced analytics for teachers, we revolutionize education delivery.
+                At Fun Physics, our passionate team of educators and developers is dedicated to shaping the future of education through collaboration, creativity, and a relentless pursuit of excellence. Join us in exploring a world of transformative educational possibilities, where curiosity meets knowledge, and boundaries of excellence are redefined.
+                </p>
+              </>
+            )}
+            
+            <button
+              style={{
+                background: 'linear-gradient(to left, #ff5733, #ffcc33)',
+                color: '#ffffff',
+                padding: '10px 20px',
+                marginBottom: "30px" // Fixed marginBottom for the button
+              }}
+              className="btn btn-custom btn-lg page-scroll"
+              onClick={handleToggleClick}
+            >
+              {showParagraph ? "Read Less" : "Read More"}
+            </button>{" "}
           </div>
+          
         </div>
       </div>
     </div>
