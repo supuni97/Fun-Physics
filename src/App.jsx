@@ -13,6 +13,8 @@ import Login from "./components/Login";
 import Signup from "./components/SignUp";
 import "./App.css";
 import { ProfileCard } from "./components/profileCard";
+import "./components/style.css";
+import Board from "./components/board";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -55,6 +57,7 @@ const App = () => {
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<Signup onSignup={handleSignup} />} />
         <Route path="/profile" element={<ProfileCard data={landingPageData.Profile}/>}/>
+        <Route path="/leaderBoard" element={<Board />} />
       </Routes>
     </Router>
   );
