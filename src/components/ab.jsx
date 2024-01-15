@@ -26,11 +26,11 @@ export const Ab = (props) => {
         
         <div className="columns">
           <div className>
-            <h3 style={{
+            <h2 style={{
               color: "#F39C5F",
               fontSize: '28px',
-              fontWeight: 'bolder'
-            }}>Unlock the Power of Playful Learning: Dive into a World of Physics Adventures with Fun Physics, Where Learning Meets Fun</h3>
+              fontWeight: 'bold'
+            }}>Unlock the Power of Playful Learning: Dive into a World of Physics Adventures with Fun Physics, Where Learning Meets Fun</h2>
 <p style={{ color: "black", fontSize: '16px', marginBottom: "30px",fontWeight:"bold" }}>
                 Fun Physics, an innovative hub where education is redefined. Our platform empowers students with cutting-edge technology, engaging content, and personalized feedback, creating a holistic learning experience.
                 </p>
