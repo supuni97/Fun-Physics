@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
-import {Intro} from "./components/intro";
+import { Intro } from "./components/intro";
+import { Game } from "./components/game";
 import { Ab } from "./components/ab";
 import { Feedback } from "./components/feedback";
 import { Features } from "./components/features";
@@ -24,6 +30,7 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 
 const App = () => {
   const [landingPageData, setLandingPageData] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
@@ -52,15 +59,26 @@ const App = () => {
               <Features data={landingPageData.Features} />
               <Gallery data={landingPageData.Gallery} />
               <Footer data={landingPageData.Footer} />
-    </div>
+            </div>
           }
         />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/signup" element={<Signup onSignup={handleSignup} />} />
-        <Route path="/profile" element={<ProfileCard data={landingPageData.Profile}/>}/>
+        <Route
+          path="/login"
+          element={<Login onLogin={handleLogin} setLoggedIn={setLoggedIn} />}
+        />
+        <Route 
+          path="/signup" 
+          element={<Signup onSignup={handleSignup} setLoggedIn={setLoggedIn} />} />
+        <Route
+          path="/game"
+          element={loggedIn ? <Game /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/profile"
+          element={<ProfileCard data={landingPageData.Profile} />}
+        />
         <Route path="/leaderBoard" element={<Board />} />
         <Route path="/feedback" element={<Feedback />} />
-    
       </Routes>
     </Router>
   );
