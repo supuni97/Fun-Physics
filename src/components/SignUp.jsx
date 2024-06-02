@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React, { useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { SignupApi } from "../API/userAuthenticationApi";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -30,16 +37,16 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-const Signup = ({ onSignup }) => {
-
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [firstNameError, setFirstNameError] = useState('');
-  const [lastNameError, setLastNameError] = useState('');
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+const Signup = ({ onSignup, setLoggedIn }) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
   const handleFirstNameChange = (event) => {
     const inputValue = event.target.value;
@@ -47,13 +54,13 @@ const Signup = ({ onSignup }) => {
     // Define a regular expression pattern for letters only
     const lettersOnlyRegex = /^[A-Za-z]+$/;
 
-    if (lettersOnlyRegex.test(inputValue) || inputValue === '') {
+    if (lettersOnlyRegex.test(inputValue) || inputValue === "") {
       // Valid input (only letters or empty)
       setFirstName(inputValue);
-      setFirstNameError('');
+      setFirstNameError("");
     } else {
       // Invalid input (contains numbers or special characters)
-      setFirstNameError('Please enter only letters');
+      setFirstNameError("Please enter only letters");
     }
   };
 
@@ -63,13 +70,13 @@ const Signup = ({ onSignup }) => {
     // Define a regular expression pattern for letters only
     const lettersOnlyRegex = /^[A-Za-z]+$/;
 
-    if (lettersOnlyRegex.test(inputValue) || inputValue === '') {
+    if (lettersOnlyRegex.test(inputValue) || inputValue === "") {
       // Valid input (only letters or empty)
       setLastName(inputValue);
-      setLastNameError('');
+      setLastNameError("");
     } else {
       // Invalid input (contains numbers or special characters)
-      setLastNameError('Please enter only letters');
+      setLastNameError("Please enter only letters");
     }
   };
 
@@ -82,9 +89,9 @@ const Signup = ({ onSignup }) => {
     const isValidEmail = emailRegex.test(newEmail);
 
     if (isValidEmail) {
-      setEmailError('');
+      setEmailError("");
     } else {
-      setEmailError('Enter a valid email address');
+      setEmailError("Enter a valid email address");
     }
   };
 
@@ -93,28 +100,54 @@ const Signup = ({ onSignup }) => {
     setPassword(newPassword);
 
     // Password validation: Minimum 8 characters
-    if (newPassword.length < 8) {
-      setPasswordError('Password must be at least 8 characters');
+    if (newPassword.length < 8 ) {
+      setPasswordError("Password must be at least 8 characters");
     } else {
-      setPasswordError('');
+      setPasswordError("");
     }
   };
 
-  const isSignUpDisabled = firstName === '' || lastName === '' || Boolean(emailError) || Boolean(passwordError);
+  const isSignUpDisabled =
+    firstName === "" ||
+    lastName === "" ||
+    email === "" ||
+    password === "" ||
+    Boolean(emailError) ||
+    Boolean(passwordError);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    onSignup(data.get('firstName'));
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+    
+      // Extract form data
+      const data = new FormData(event.currentTarget);
+      const email = data.get("email");
+      const password = data.get("password");
+      const firstName = data.get("firstName");
+      const lastName = data.get("lastName");
+      const displayName = `${firstName} ${lastName}`.trim();
+    
+      try {
+        const response = await SignupApi(email, password, displayName);
+        if (response.status === 200) {
+          setLoggedIn(true);
+          navigate('/game');
+          onSignup(firstName);
+        } 
+      } catch (error) {
+        if (error.response.data.error.code === 'auth/email-already-in-use'){
+          alert('The email is already in use');
+        } else {
+          alert(`Unexpected error: ${error.message}`);
+        }
+        console.log(error);
+      }
+     
+    };
+    
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -122,12 +155,14 @@ const Signup = ({ onSignup }) => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(img/signup.jpg)',
-            backgroundRepeat: 'no-repeat',
+            backgroundImage: "url(img/signup.jpg)",
+            backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+              t.palette.mode === "light"
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -135,18 +170,23 @@ const Signup = ({ onSignup }) => {
             sx={{
               my: 8,
               mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'green' }}>
+            <Avatar sx={{ m: 1, bgcolor: "green" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Get Started Now
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 3 }}
+            >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
@@ -191,7 +231,7 @@ const Signup = ({ onSignup }) => {
                     helperText={emailError}
                     InputProps={{
                       inputProps: {
-                        pattern: '[^s@]+@[^s@]+.[^s@]+',
+                        pattern: "[^s@]+@[^s@]+.[^s@]+",
                       },
                     }}
                   />
@@ -213,7 +253,9 @@ const Signup = ({ onSignup }) => {
                 </Grid>
                 <Grid item xs={12}>
                   <FormControlLabel
-                    control={<Checkbox value="allowExtraEmails" color="primary" />}
+                    control={
+                      <Checkbox value="allowExtraEmails" color="primary" />
+                    }
                     label="I want to receive inspiration, marketing promotions and updates via email."
                   />
                 </Grid>
@@ -222,7 +264,10 @@ const Signup = ({ onSignup }) => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={[{ '&:hover': { backgroundColor: 'teal' } }, { mt: 3, mb: 2, backgroundColor: 'green' }]}
+                sx={[
+                  { "&:hover": { backgroundColor: "teal" } },
+                  { mt: 3, mb: 2, backgroundColor: "green" },
+                ]}
                 disabled={isSignUpDisabled}
               >
                 Sign Up
@@ -241,5 +286,5 @@ const Signup = ({ onSignup }) => {
       </Grid>
     </ThemeProvider>
   );
-}
+};
 export default Signup;
