@@ -13,6 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { loginApi } from "../API/userAuthenticationApi";
 
 function Copyright(props) {
   return (
@@ -39,10 +40,27 @@ const defaultTheme = createTheme();
 const Login = ({ onLogin, setLoggedIn }) => {
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    onLogin(data.get("email"));
+    const email = data.get("email");
+    const password = data.get("password");
+    
+    try {
+      const response = await loginApi(email, password);
+      if (response.status === 200) {
+        setLoggedIn(true);
+        navigate('/game');
+        onLogin(data.get("email"));
+      } 
+    } catch (error) {
+      if (error.response.data.error.code === 'auth/invalid-credential'){
+        alert('Invalid credentials');
+      } else {
+        alert(`Unexpected error: ${error.message}`);
+      }
+      console.log(error);
+    }
 
     console.log({
       email: data.get("email"),
