@@ -47,6 +47,12 @@ export const Navigation = (props) => {
             </li>
 
             <li>
+              <a style={{color: "bisque"}} href="/feedback" className="page-scroll">
+                Contact US
+              </a>
+            </li>
+
+            <li>
               <a style={{color: "bisque"}} href="/login" className="page-scroll">
                 Login
               </a>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const Ab = (props) => {
+export const Ab = () => {
   const [showParagraph, setShowParagraph] = useState(false);
 
   const handleToggleClick = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Intro = (props) => {
+export const Intro = () => {
   return (
     <div id="intro" style={{ backgroundColor: "white" }} className="text-center">
       <div className="container">

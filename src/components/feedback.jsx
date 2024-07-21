@@ -7,7 +7,7 @@ const initialState = {
   email: "",
   message: "",
 };
-export const Feedback = (props) => {
+export const Feedback = () => {
   const [{ name, email, message }, setState] = useState(initialState);
 
   const handleChange = (e) => {

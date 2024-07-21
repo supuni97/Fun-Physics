@@ -17,11 +17,14 @@ import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
-import "./App.css";
+
 import { ProfileCard } from "./components/profileCard";
-import "./components/style.css";
 import Board from "./components/board";
 import { Footer } from "./components/footer";
+import './components/style.css';
+import "./App.css";
+import "./components/style.css";
+
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
