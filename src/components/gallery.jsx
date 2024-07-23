@@ -18,7 +18,7 @@ export function Gallery(props) {
                     <img src={d.img} alt="..." className="team-img" style={{ height: "120px" }} />
                     <div className="caption" style={{ color: "beige" }}>
                       <h4 style={{ color:"bisque" }}>{d.name}</h4>
-                      <p>{d.desc}</p>
+                      
                     </div>
                     <a
                       className="btn"
