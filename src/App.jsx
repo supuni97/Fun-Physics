@@ -10,7 +10,7 @@ import { Header } from "./components/header";
 import { Intro } from "./components/intro";
 import { Game } from "./components/game";
 import { Ab } from "./components/ab";
-import { Feedback } from "./components/feedback";
+import Feedback  from "./components/feedback";
 import { Features } from "./components/features";
 import { Gallery } from "./components/gallery";
 import JsonData from "./data/data.json";
