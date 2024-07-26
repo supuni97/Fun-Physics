@@ -80,6 +80,10 @@ const App = () => {
           path="/profile"
           element={<ProfileCard data={landingPageData.Profile} />}
         />
+        <Route
+          path="/leaderboard"
+          element={<Board/>}
+        />
         <Route path="/leaderBoard" element={<Board />} />
         <Route path="/feedback" element={<Feedback />} />
       </Routes>
