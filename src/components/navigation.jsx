@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from '../images/Logo.jpg';
 
-export const Navigation = (props) => {
+export const Navigation = () => {
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top" style={{backgroundColor: "black", height: "60px"}}>
       <div className="container">
@@ -41,7 +41,7 @@ export const Navigation = (props) => {
             </li>
 
             <li>
-              <a style={{color: "bisque"}} href="#team" className="page-scroll">
+              <a style={{color: "bisque"}} href="#gallery" className="page-scroll">
                 Game Gallery
               </a>
             </li>
