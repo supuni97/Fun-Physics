@@ -20,7 +20,11 @@ import Signup from "./components/SignUp";
 import { ProfileCard } from "./components/profileCard";
 import Board from "./components/board";
 import { Footer } from "./components/footer";
-import Game1Window from "./components/game1Window"; // Make sure to import the Game1Window component
+import Game1Window from "./components/game1Window";
+import Sinhala from "./components/lessons/sinhala";
+import English from "./components/lessons/english";
+import Game1Lesson from "./components/Game1Lesson";
+
 import './components/style.css';
 import "./App.css";
 import "./components/style.css";
@@ -85,7 +89,9 @@ const App = () => {
         />
         <Route path="/leaderBoard" element={<Board />} />
         <Route path="/feedback" element={<Feedback />} />
-        <Route path="/game1" element={<Game1Window />} /> {/* Add route for Game1Window */}
+        <Route path="/game1" element={<Game1Window />} />
+        <Route path="/lesson/sinhala" element={<Sinhala />} />
+        <Route path="/lesson/english" element={<English />} />
       </Routes>
     </Router>
   );
