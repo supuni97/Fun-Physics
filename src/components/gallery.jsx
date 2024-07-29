@@ -12,7 +12,7 @@ export function Gallery(props) {
             {props.data
               ? props.data.map((d, i) => (
                 <div key={`${d.name}-${i}`} className="col-xs-3">
-                  <div className="thumbnail" style={{ backgroundColor: "black", padding: "10px" }}>
+                  <div className="thumbnail" style={{ backgroundColor: "black", padding: "10px",height:'250px' }}>
                     <img src={d.img} alt="..." className="team-img" style={{ height: "120px" }} />
                     <div className="caption" style={{ color: "beige" }}>
                       <h4 style={{ color: "bisque" }}>{d.name}</h4>
@@ -24,7 +24,6 @@ export function Gallery(props) {
                           background: 'linear-gradient(to left, #ff5733, #ffcc33)', // Gradient from orange to yellow
                           color: '#ffffff', // Text color
                           padding: '5px 40px',
-                          marginBottom: "10px",
                           borderRadius: "40px"
                         }}
                         href={`/game${i + 1}`}

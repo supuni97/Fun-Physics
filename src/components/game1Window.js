@@ -1,8 +1,14 @@
-import React from 'react'
-
+import React from 'react';
+import UnityGame from './UnityGame';
+import Game1Lesson from './Game1Lesson';
 const game1Window = () => {
   return (
-    <div>game1Window</div>
+    <div>
+    
+    <h3>Physics Dash</h3>
+    <Game1Lesson/>
+    <UnityGame/>
+    </div>
   )
 }
 
