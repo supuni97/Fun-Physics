@@ -1,7 +1,34 @@
 import React from 'react';
 import Image1 from '../../images/lesson/img1.jpg';
+import ReactPlayer from 'react-player/youtube';
 
 const english = () => {
+  // CSS styles
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end', // Align videos to the bottom
+    alignItems: 'center',
+    gap: '10px',
+    padding: '2px'
+  };
+
+  const playerWrapperStyle = {
+    position: 'relative',
+    paddingTop: '45%', 
+    width: '90%', // Adjusted to be responsive
+    maxWidth: '600px', // Adjust as needed
+    margin: '5px'
+  };
+
+  const reactPlayerStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%'
+  };
+
   return (
     <div>
       <div id="lessonEnglish" style={{ backgroundColor: "bisque" }} className="text-center">
@@ -115,62 +142,30 @@ const english = () => {
               borderRadius: '10px'
             }}>
               <strong>Example Problems</strong><br />
-              <em>Problem 1:</em> A car starts from rest (initial velocity u = 0) and accelerates at 2 m/s² for 10 seconds. What is its final velocity?<br />
+              1. <em>Problem 1:</em> A car starts from rest (initial velocity u = 0) and accelerates at 2 m/s² for 10 seconds. What is its final velocity?<br />
               v = u + at<br />
               v = 0 + (2 m/s² × 10 s) = 20 m/s<br />
-              <em>Problem 2:</em> How far does the car travel in the above example?<br />
+              2. <em>Problem 2:</em> How far does the car travel in the above example?<br />
               s = ut + 1/2 at^2<br />
               s = 0 × 10 s + 1/2 × 2 m/s² × (10 s)²<br />
               s = 0 + 100 m = 100 m
             </p>
           </div>
         </div>
-        <h3>Related Videos</h3>
-        <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/watch?v=GX5zToM_Vvg"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style={{
-                display: 'block',
-                margin: '20px auto',
-                borderRadius: '10px',
-                border: '2px solid #ddd'
-              }}
-            ></iframe>
-              <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/your-video-id"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style={{
-                display: 'block',
-                margin: '20px auto',
-                borderRadius: '10px',
-                border: '2px solid #ddd'
-              }}
-            ></iframe>
-              <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/your-video-id"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style={{
-                display: 'block',
-                margin: '20px auto',
-                borderRadius: '10px',
-                border: '2px solid #ddd'
-              }}
-            ></iframe>
+        <div>
+          <strong>Related Videos</strong>
+          <div style={containerStyle}>
+            <div style={playerWrapperStyle}>
+              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=GX5zToM_Vvg&t=33s' />
+            </div>
+            <div style={playerWrapperStyle}>
+              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=ZM8ECpBuQYE&t=1s' />
+            </div>
+            <div style={playerWrapperStyle}>
+              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=vxFYfumAAlY&t=1s' />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

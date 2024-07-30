@@ -1,7 +1,34 @@
 import React from 'react';
 import Image1 from '../../images/lesson/img1.jpg';
+import ReactPlayer from 'react-player/youtube';
 
 const english = () => {
+  // CSS styles
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end', // Align videos to the bottom
+    alignItems: 'center',
+    gap: '10px',
+    padding: '2px'
+  };
+
+  const playerWrapperStyle = {
+    position: 'relative',
+    paddingTop: '45%', 
+    width: '90%', // Adjusted to be responsive
+    maxWidth: '600px', // Adjust as needed
+    margin: '5px'
+  };
+
+  const reactPlayerStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%'
+  };
+
   return (
     <div>
       <div id="lessonEnglish" style={{ backgroundColor: "bisque" }} className="text-center">
@@ -13,7 +40,7 @@ const english = () => {
               fontSize: '28px',
               fontWeight: 'bold',
               padding: '10px'
-            }}>MOTION</h2>
+            }}>ගතිකතාව</h2>
             <img
               src={Image1}
               alt="img1"
@@ -33,8 +60,8 @@ const english = () => {
               backgroundColor: '#fff5e1',
               borderRadius: '10px'
             }}>
-              <strong>Introduction to Motion</strong><br />
-              Motion is a fundamental concept in physics that describes the change in position of an object over time. Understanding motion involves several key concepts: distance, displacement, speed, velocity, and acceleration. Additionally, equations of motion provide mathematical descriptions of how objects move.
+              <strong>ගතිකතාවයට හැඳින්වීම</strong><br />
+              ගතිකතාව යනු භෞතික විද්‍යා මූලික සංකල්පයක් වන අතර එය කාලය සමග වස්තුවක ස්ථානයේ වෙනස්වීම විස්තර කරයි. ගතිකතාව අවබෝධ කර ගැනීමේදී දුර, ගමන්කල දුර, වේගය, වේගය සහ ත්වරණය යන ප්‍රධාන සංකල්ප කිහිපයක් අඩංගු වේ. එකතුව, ගතිකතා සමීකරණ වස්තු ගමන් කිරීමේ ගණිතමය විස්තර සපයයි.
             </p>
             <p style={{
               textAlign: 'left',
@@ -43,9 +70,9 @@ const english = () => {
               backgroundColor: '#fff5e1',
               borderRadius: '10px'
             }}>
-              <strong>Distance</strong><br />
-              Distance is a scalar quantity that represents the total path length traveled by an object. It is always positive and does not take direction into account.<br />
-              <em>Example:</em> If you walk 3 meters forward and then 4 meters backward, the total distance you walked is 3 + 4 = 7 meters.
+              <strong>දුර</strong><br />
+              දුර යනු වස්තුවක් විසින් ගමන් කළ මුළු පථයේ දිග නිරූපණය කරන ස්කේලාර් ප්‍රමාණයක් වේ. එය සෑම විටම ධන අගයකින් යුක්ත වන අතර දිශාව පිළිබඳව ගණනට නොගනියි.<br />
+              <em>උදාහරණයක්:</em> ඔබ මීටර් 3ක් ඉදිරියට යන්නට සහ මීටර් 4ක් පසුබැස ගමන් කරන විට, ඔබ ගමන් කළ මුළු දුර 3 + 4 = 7 මීටර් වේ.
             </p>
             <p style={{
               textAlign: 'left',
@@ -54,9 +81,9 @@ const english = () => {
               backgroundColor: '#fff5e1',
               borderRadius: '10px'
             }}>
-              <strong>Displacement</strong><br />
-              Displacement is a vector quantity that represents the change in position of an object. It has both magnitude and direction, measuring the shortest path from the initial to the final position.<br />
-              <em>Example:</em> If you walk 3 meters forward and then 4 meters backward, your displacement is 3 - 4 = -1 meter (the negative sign indicates direction).
+              <strong>ගමන්කල දුර</strong><br />
+              ගමන්කල දුර යනු වස්තුවක ස්ථානයේ වෙනස්වීම නිරූපණය කරන දෘශ්‍යානුපාතික ප්‍රමාණයක් වේ. එය ප්‍රමාණ සහ දිශාව යන දෙකම අඩංගු කර ඇත, මුලික ස්ථානයේ සිට අවසන් ස්ථානය දක්වා කෙටිම මාවත මැනේ.<br />
+              <em>උදාහරණයක්:</em> ඔබ මීටර් 3ක් ඉදිරියට යන්නට සහ මීටර් 4ක් පසුබැස ගමන් කරන විට, ඔබගේ ගමන්කල දුර 3 - 4 = -1 මීටර් වේ (ඇණුම දිශාව නිරූපණය කරයි).
             </p>
             <p style={{
               textAlign: 'left',
@@ -65,10 +92,10 @@ const english = () => {
               backgroundColor: '#fff5e1',
               borderRadius: '10px'
             }}>
-              <strong>Speed</strong><br />
-              Speed is a scalar quantity that measures how fast an object is moving. It is the rate of change of distance with respect to time.<br />
-              Speed = Distance / Time<br />
-              <em>Example:</em> If a car travels 100 kilometers in 2 hours, its speed is 100 km / 2 hr = 50 km/hr.
+              <strong>වේගය</strong><br />
+              වේගය යනු වස්තුවක් කොපමණ වේගයෙන් ගමන් කරන්නේදැයි මැනීමේ ස්කේලාර් ප්‍රමාණයක් වේ. එය කාලය සමග දුරේ වෙනස්වීමේ අනුපාතය වේ.<br />
+              වේගය = දුර / කාලය<br />
+              <em>උදාහරණයක්:</em> යතුරු රථයක් පැය 2කදී කිලෝමීටර් 100ක් ගමන් කළහොත්, එහි වේගය කිලෝමීටර් 100 / පැය 2 = පැයට 50 කිලෝමීටර් වේ.
             </p>
             <p style={{
               textAlign: 'left',
@@ -77,10 +104,10 @@ const english = () => {
               backgroundColor: '#fff5e1',
               borderRadius: '10px'
             }}>
-              <strong>Velocity</strong><br />
-              Velocity is a vector quantity that measures the rate of change of displacement with respect to time. It includes both speed and direction.<br />
-              Velocity = Displacement / Time<br />
-              <em>Example:</em> If a car travels 100 kilometers north in 2 hours, its velocity is 100 km / 2 hr = 50 km/hr north.
+              <strong>වේගය</strong><br />
+              වේගය යනු කාලය සමග ගමන්කල දුරේ වෙනස්වීමේ අනුපාතය මැනීමේ දෘශ්‍යානුපාතික ප්‍රමාණයක් වේ. එය වේගය සහ දිශාව යන දෙකම අඩංගු වේ.<br />
+              වේගය = ගමන්කල දුර / කාලය<br />
+              <em>උදාහරණයක්:</em> යතුරු රථයක් උතුරට කිලෝමීටර් 100ක් පැය 2කදී ගමන් කළහොත්, එහි වේගය උතුරට කිලෝමීටර් 100 / පැය 2 = පැයට 50 කිලෝමීටර් වේ.
             </p>
             <p style={{
               textAlign: 'left',
@@ -89,10 +116,10 @@ const english = () => {
               backgroundColor: '#fff5e1',
               borderRadius: '10px'
             }}>
-              <strong>Acceleration</strong><br />
-              Acceleration is a vector quantity that measures the rate of change of velocity with respect to time. It can be positive (speeding up), negative (slowing down), or zero (constant velocity).<br />
-              Acceleration = Change in Velocity / Time<br />
-              <em>Example:</em> If a car's velocity increases from 0 to 60 km/hr in 5 seconds, its acceleration is 60 km/hr / 5 s = 12 km/hr/s.
+              <strong>තවරණය</strong><br />
+              තවරණය යනු වේගයේ වෙනස්වීමේ අනුපාතය මැනීමේ දෘශ්‍යානුපාතික ප්‍රමාණයක් වේ. එය ධනාත්මක (වේගය වැඩිවීම), ඍණාත්මක (වේගය අඩු වීම) හෝ ශුන්‍ය (ස්ථිර වේගය) විය හැක.<br />
+              තවරණය = වේගයේ වෙනස්වීම / කාලය<br />
+              <em>උදාහරණයක්:</em> යතුරු රථයේ වේගය තත්පර 5ක් තුළ කිලෝමීටර් 0 සිට කිලෝමීටර් 60 දක්වා වැඩිවන්නේ නම්, එහි තවරණය කිලෝමීටර් 60 / තත්පර 5 = තත්පර 12කට කිලෝමීටර් වේ.
             </p>
             <p style={{
               textAlign: 'left',
@@ -101,11 +128,11 @@ const english = () => {
               backgroundColor: '#fff5e1',
               borderRadius: '10px'
             }}>
-              <strong>Equations of Motion</strong><br />
-              The equations of motion describe the relationship between displacement, velocity, acceleration, and time. These equations apply to objects moving with constant acceleration.<br />
-              1. First Equation of Motion: v = u + at<br />
-              2. Second Equation of Motion: s = ut + 1/2 at²<br />
-              3. Third Equation of Motion: v² = u² + 2as
+              <strong>ගතිකතා සමීකරණ</strong><br />
+              ගතිකතා සමීකරණයන් සplacementsුන් තවරණයෙන් ගමන් කරන වස්තූන් අතර දිශාව, වේගය, තවරණය සහ කාලය අතර සම්බන්ධතාවය විස්තර කරයි.<br />
+              1. පළමු ගතිකතා සමීකරණය: v = u + at<br />
+              2. දෙවන ගතිකතා සමීකරණය: s = ut + 1/2 at²<br />
+              3. තෙවන ගතිකතා සමීකරණය: v² = u² + 2as
             </p>
             <p style={{
               textAlign: 'left',
@@ -114,63 +141,31 @@ const english = () => {
               backgroundColor: '#fff5e1',
               borderRadius: '10px'
             }}>
-              <strong>Example Problems</strong><br />
-              <em>Problem 1:</em> A car starts from rest (initial velocity u = 0) and accelerates at 2 m/s² for 10 seconds. What is its final velocity?<br />
+              <strong>උදාහරණ ගැටලු</strong><br />
+              1. <em>උදාහරණ ගැටළුව 1:</em> යතුරු රථයක් විවේකයෙන් (මුලික වේගය u = 0) ඇරඹී තත්පර 10කදී මීටර්/තත්පර 2ක තවරණයක් ලබා ගතහොත්, අවසාන වේගය කුමක්ද?<br />
               v = u + at<br />
-              v = 0 + (2 m/s² × 10 s) = 20 m/s<br />
-              <em>Problem 2:</em> How far does the car travel in the above example?<br />
-              s = ut + 1/2 at^2<br />
-              s = 0 × 10 s + 1/2 × 2 m/s² × (10 s)²<br />
-              s = 0 + 100 m = 100 m
+              v = 0 + (මීටර්/තත්පර 2 × තත්පර 10) = මීටර්/තත්පර 20<br />
+              2. <em>උදාහරණ ගැටළුව 2:</em> ඉහත උදාහරණයේ යතුරු රථය කොපමණ දුරක් ගමන් කරයිද?<br />
+              s = ut + 1/2 at²<br />
+              s = 0 × තත්පර 10 + 1/2 × මීටර්/තත්පර 2 × (තත්පර 10)²<br />
+              s = 0 + මීටර් 100 = මීටර් 100
             </p>
           </div>
         </div>
-        <h3>Related Videos</h3>
-        <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/your-video-id"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style={{
-                display: 'block',
-                margin: '20px auto',
-                borderRadius: '10px',
-                border: '2px solid #ddd'
-              }}
-            ></iframe>
-              <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/your-video-id"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style={{
-                display: 'block',
-                margin: '20px auto',
-                borderRadius: '10px',
-                border: '2px solid #ddd'
-              }}
-            ></iframe>
-              <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/your-video-id"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style={{
-                display: 'block',
-                margin: '20px auto',
-                borderRadius: '10px',
-                border: '2px solid #ddd'
-              }}
-            ></iframe>
+        <div>
+          <strong>ආශ්‍රිත වීඩියෝ</strong>
+          <div style={containerStyle}>
+            <div style={playerWrapperStyle}>
+              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=GX5zToM_Vvg&t=33s' />
+            </div>
+            <div style={playerWrapperStyle}>
+              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=ZM8ECpBuQYE&t=1s' />
+            </div>
+            <div style={playerWrapperStyle}>
+              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=vxFYfumAAlY&t=1s' />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
