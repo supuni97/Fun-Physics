@@ -156,13 +156,13 @@ const english = () => {
           <strong>ආශ්‍රිත වීඩියෝ</strong>
           <div style={containerStyle}>
             <div style={playerWrapperStyle}>
-              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=GX5zToM_Vvg&t=33s' />
+              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=_hjDLJ1nONU' />
             </div>
             <div style={playerWrapperStyle}>
-              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=ZM8ECpBuQYE&t=1s' />
+              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=p9XM2bpj-es' />
             </div>
             <div style={playerWrapperStyle}>
-              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=vxFYfumAAlY&t=1s' />
+              <ReactPlayer style={reactPlayerStyle} url='https://www.youtube.com/watch?v=6M8Tx4WcqSk' />
             </div>
           </div>
         </div>
