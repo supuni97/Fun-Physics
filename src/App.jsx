@@ -23,7 +23,9 @@ import { Footer } from "./components/footer";
 import Game1Window from "./components/game1Window";
 import Sinhala from "./components/lessons/sinhala";
 import English from "./components/lessons/english";
-import Game1Lesson from "./components/Game1Lesson";
+import AdminPanel from "./components/adminPanel/AdminPanel";
+import Add from "./components/adminPanel/Add";
+import Edit from "./components/adminPanel/Edit";
 
 import './components/style.css';
 import "./App.css";
@@ -92,6 +94,12 @@ const App = () => {
         <Route path="/game1" element={<Game1Window />} />
         <Route path="/lesson/sinhala" element={<Sinhala />} />
         <Route path="/lesson/english" element={<English />} />
+        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin/create" element={<Add/>} />
+        <Route path="/admin/update/:id" element={<Edit/>} />
+        <Route path="/admin/delete/:id" element={<Add/>} />
+
+
       </Routes>
     </Router>
   );

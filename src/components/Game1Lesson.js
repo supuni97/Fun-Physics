@@ -1,14 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 const Game1Lesson = () => {
   const navigate = useNavigate();
   
   return (
     <div>
 
-      <h3>Lession</h3>
+      <h3 style={{color:"blueviolet"}}>Lession</h3>
       <a
         className="btn"
         style={{
