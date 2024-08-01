@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import Profiles from './profiles';
 import {Leaderboard} from './databse';
+import {getLeaderboardData} from "../API/leaderboardApi";
 
-export default function Board() {
+export default function Board({idToken}) {
 
     const [period, setPeriod] = useState(0);
 
-  const handleClick = (e) => {
-     
-    setPeriod(e.target.dataset.id)
+  const handleClick = (e) =>  {
+    setPeriod(e.target.dataset.id);
+    console.log(getLeaderboardData(idToken).data.data);
   }
+
 
   return (
     <div className="board" style={{marginLeft:"10vw",marginRight:"20vw" }}>
@@ -36,7 +38,7 @@ function between(data, between){
 
     let filter = data.filter(val => {
         let userDate = new Date(val.dt);
-        if (between == 0) return val;
+        if (between === 0) return val;
         return previous <= userDate && today >= userDate;
     })
 
