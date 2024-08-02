@@ -32,15 +32,17 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 });
 
 const App = () => {
+  const [idToken, setIdToken] = useState(null);
   const [landingPageData, setLandingPageData] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
 
-  const handleLogin = (username) => {
+  const handleLogin = (username, token) => {
+    setIdToken(token); 
+    setLoggedIn(true); 
     alert(`User ${username} logged in successfully!`);
-    // You can redirect the user to a different page or perform other actions after login
   };
 
   const handleSignup = (username) => {
@@ -79,6 +81,10 @@ const App = () => {
         <Route
           path="/profile"
           element={<ProfileCard data={landingPageData.Profile} />}
+        />
+        <Route
+          path="/leaderboard"
+          element={<Board idToken={idToken} />}
         />
         <Route path="/leaderBoard" element={<Board />} />
         <Route path="/feedback" element={<Feedback />} />

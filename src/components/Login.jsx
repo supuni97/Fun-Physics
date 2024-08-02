@@ -51,7 +51,8 @@ const Login = ({ onLogin, setLoggedIn }) => {
       if (response.status === 200) {
         setLoggedIn(true);
         navigate('/game');
-        onLogin(data.get("email"));
+        onLogin(data.get("email"), response.data.token);
+        // console.log(response.data.token);
       } 
     } catch (error) {
       if (error.response.data.error.code === 'auth/invalid-credential'){
@@ -62,10 +63,6 @@ const Login = ({ onLogin, setLoggedIn }) => {
       console.log(error);
     }
 
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
   };
 
   return (
