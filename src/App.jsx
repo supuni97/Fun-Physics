@@ -10,21 +10,26 @@ import { Header } from "./components/header";
 import { Intro } from "./components/intro";
 import { Game } from "./components/game";
 import { Ab } from "./components/ab";
-import Feedback  from "./components/feedback";
+import Feedback from "./components/feedback";
 import { Features } from "./components/features";
 import { Gallery } from "./components/gallery";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
-
 import { ProfileCard } from "./components/profileCard";
 import Board from "./components/board";
 import { Footer } from "./components/footer";
+import Game1Window from "./components/game1Window";
+import Sinhala from "./components/lessons/sinhala";
+import English from "./components/lessons/english";
+import AdminPanel from "./components/adminPanel/AdminPanel";
+import Add from "./components/adminPanel/Add";
+import Edit from "./components/adminPanel/Edit";
+
 import './components/style.css';
 import "./App.css";
 import "./components/style.css";
-
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -35,6 +40,7 @@ const App = () => {
   const [idToken, setIdToken] = useState(null);
   const [landingPageData, setLandingPageData] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
@@ -48,6 +54,7 @@ const App = () => {
   const handleSignup = (username) => {
     // Handle signup logic
     alert(`User ${username} signed up successfully!`);
+    setLoggedIn(true);
   };
 
   return (
@@ -71,9 +78,10 @@ const App = () => {
           path="/login"
           element={<Login onLogin={handleLogin} setLoggedIn={setLoggedIn} />}
         />
-        <Route 
-          path="/signup" 
-          element={<Signup onSignup={handleSignup} setLoggedIn={setLoggedIn} />} />
+        <Route
+          path="/signup"
+          element={<Signup onSignup={handleSignup} setLoggedIn={setLoggedIn} />}
+        />
         <Route
           path="/game"
           element={loggedIn ? <Game /> : <Navigate to="/login" />}
@@ -88,6 +96,15 @@ const App = () => {
         />
         <Route path="/leaderBoard" element={<Board />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/game1" element={<Game1Window />} />
+        <Route path="/lesson/sinhala" element={<Sinhala />} />
+        <Route path="/lesson/english" element={<English />} />
+        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin/create" element={<Add/>} />
+        <Route path="/admin/update/:id" element={<Edit/>} />
+        <Route path="/admin/delete/:id" element={<Add/>} />
+
+
       </Routes>
     </Router>
   );

@@ -10,12 +10,13 @@ export const Ab = () => {
   return (
     <div id="ab" style={{ backgroundColor: "bisque" }} className="text-center">
       <div className="container">
-        <div className="col-md-10 col-md-offset-1 section-title">
+        <div>
           <h2 style={{
             color: "brown",
             fontFamily: 'Arial, sans-serif',
-            fontSize: '24px',
-            fontWeight: 'bold'
+            fontSize: '28px',
+            fontWeight: 'bold',
+            paddingTop:'5px'
           }}>Little More About Us</h2>
           <img
               src="img/about/aboutUs.jpg"

@@ -75,7 +75,7 @@ const Feedback = () => {
                 </a>
               </li>
               <li>
-                <a style={{ color: "bisque" }} href="/#team" className="page-scroll">
+                <a style={{ color: "bisque" }} href="/#gallery" className="page-scroll">
                   Game Gallery
                 </a>
               </li>
