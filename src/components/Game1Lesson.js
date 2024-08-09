@@ -34,7 +34,7 @@ const Game1Lesson = () => {
       >
         English Medium
       </a>
-      <h3>Game</h3>
+      <h3 style={{color:"blueviolet"}}>Game</h3>
     </div>
   );
 }
