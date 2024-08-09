@@ -26,6 +26,8 @@ import English from "./components/lessons/english";
 import AdminPanel from "./components/adminPanel/AdminPanel";
 import Add from "./components/adminPanel/Add";
 import Edit from "./components/adminPanel/Edit";
+import StudentProfile from "./components/studentProfile";
+import TeacherProfile from "./components/teacherProfile";
 
 import './components/style.css';
 import "./App.css";
@@ -103,6 +105,9 @@ const App = () => {
         <Route path="/admin/create" element={<Add/>} />
         <Route path="/admin/update/:id" element={<Edit/>} />
         <Route path="/admin/delete/:id" element={<Add/>} />
+        <Route path="/profileCard" element={<ProfileCard/>} />
+        <Route path="/student" element={<StudentProfile/>} />
+        <Route path="/teacher" element={<TeacherProfile/>} />
 
 
       </Routes>
