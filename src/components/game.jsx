@@ -15,6 +15,32 @@ export const Game = () => {
       >
         Leaderboad
       </Button>
+      <Button
+        onClick={() => {
+          alert("clicked");
+          navigate('/profileCard');
+        }}
+      >
+        profileCard
+      </Button>
+      <Button
+        onClick={() => {
+          alert("clicked");
+          navigate('/student');
+        }}
+      >
+        student profile
+      </Button>
+      <Button
+        onClick={() => {
+          alert("clicked");
+          navigate('/teacher');
+        }}
+      >
+        teacher profile
+      </Button>
+      
+
     </div>
   );
 };
