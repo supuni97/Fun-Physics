@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const createBackendInstance = () => {
-  const baseURL = "http://localhost:5000/";
+  const baseURL = "https://fun-physics-backend.onrender.com";
 
   const instance = axios.create({
     baseURL,
