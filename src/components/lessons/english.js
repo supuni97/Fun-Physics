@@ -61,7 +61,9 @@ const english = () => {
               borderRadius: '10px'
             }}>
               <strong>Introduction to Motion</strong><br />
-              Motion is a fundamental concept in physics that describes the change in position of an object over time. Understanding motion involves several key concepts: distance, displacement, speed, velocity, and acceleration. Additionally, equations of motion provide mathematical descriptions of how objects move.
+              Motion is a fundamental concept in physics that describes the change in position of an object over time. 
+              Understanding motion involves several key concepts: distance, displacement, speed, velocity, and acceleration. 
+              Additionally, equations of motion provide mathematical descriptions of how objects move.
             </p>
             <p style={{
               textAlign: 'left',
