@@ -40,20 +40,23 @@ const App = () => {
   const [idToken, setIdToken] = useState(null);
   const [landingPageData, setLandingPageData] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  const [email, setEmail] = useState(null);
 
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
 
   const handleLogin = (username, token) => {
+    setEmail(username);
     setIdToken(token); 
     setLoggedIn(true); 
-    alert(`User ${username} logged in successfully!`);
+    // alert(`User ${username} logged in successfully!`);
   };
 
   const handleSignup = (username) => {
     // Handle signup logic
-    alert(`User ${username} signed up successfully!`);
+    setEmail(username);
+    // alert(`User ${username} signed up successfully!`);
     setLoggedIn(true);
   };
 
@@ -84,11 +87,7 @@ const App = () => {
         />
         <Route
           path="/game"
-          element={loggedIn ? <Game /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/profile"
-          element={<ProfileCard data={landingPageData.Profile} />}
+          element={loggedIn ? <Game idToken={idToken} email={email}/> : <Navigate to="/login" />}
         />
         <Route
           path="/leaderboard"
@@ -103,6 +102,9 @@ const App = () => {
         <Route path="/admin/create" element={<Add/>} />
         <Route path="/admin/update/:id" element={<Edit/>} />
         <Route path="/admin/delete/:id" element={<Add/>} />
+        {/* <Route path="/profileCard" element={<ProfileCard/>} /> */}
+        {/* <Route path="/student" element={<StudentProfile/>} />
+        <Route path="/teacher" element={<TeacherProfile/>} /> */}
 
 
       </Routes>

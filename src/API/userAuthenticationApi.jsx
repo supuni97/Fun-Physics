@@ -11,11 +11,12 @@ const loginApi = async (email, password) => {
   return response;
 };
 
-const SignupApi = async (email, password, displayName) => {
+const SignupApi = async (email, password, displayName, school) => {
   const payload = {
     email,
     password,
     displayName,
+    school
   };
   const response = await api.post("signup", payload);
   return response;

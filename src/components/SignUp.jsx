@@ -33,8 +33,6 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
 const Signup = ({ onSignup, setLoggedIn }) => {
@@ -46,36 +44,30 @@ const Signup = ({ onSignup, setLoggedIn }) => {
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [school, setSchool] = useState(""); // New state for school
+  const [schoolError, setSchoolError] = useState(""); // New state for school error
   const navigate = useNavigate();
 
   const handleFirstNameChange = (event) => {
     const inputValue = event.target.value;
-
-    // Define a regular expression pattern for letters only
     const lettersOnlyRegex = /^[A-Za-z]+$/;
 
     if (lettersOnlyRegex.test(inputValue) || inputValue === "") {
-      // Valid input (only letters or empty)
       setFirstName(inputValue);
       setFirstNameError("");
     } else {
-      // Invalid input (contains numbers or special characters)
       setFirstNameError("Please enter only letters");
     }
   };
 
   const handleLastNameChange = (event) => {
     const inputValue = event.target.value;
-
-    // Define a regular expression pattern for letters only
     const lettersOnlyRegex = /^[A-Za-z]+$/;
 
     if (lettersOnlyRegex.test(inputValue) || inputValue === "") {
-      // Valid input (only letters or empty)
       setLastName(inputValue);
       setLastNameError("");
     } else {
-      // Invalid input (contains numbers or special characters)
       setLastNameError("Please enter only letters");
     }
   };
@@ -84,7 +76,6 @@ const Signup = ({ onSignup, setLoggedIn }) => {
     const newEmail = event.target.value;
     setEmail(newEmail);
 
-    // Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValidEmail = emailRegex.test(newEmail);
 
@@ -99,11 +90,22 @@ const Signup = ({ onSignup, setLoggedIn }) => {
     const newPassword = event.target.value;
     setPassword(newPassword);
 
-    // Password validation: Minimum 8 characters
-    if (newPassword.length < 8 ) {
+    if (newPassword.length < 8) {
       setPasswordError("Password must be at least 8 characters");
     } else {
       setPasswordError("");
+    }
+  };
+
+  const handleSchoolChange = (event) => {
+    const inputValue = event.target.value;
+    const lettersOnlyRegex = /^[A-Za-z\s]+$/;
+
+    if (lettersOnlyRegex.test(inputValue) || inputValue === "") {
+      setSchool(inputValue);
+      setSchoolError("");
+    } else {
+      setSchoolError("Please enter only letters");
     }
   };
 
@@ -112,38 +114,38 @@ const Signup = ({ onSignup, setLoggedIn }) => {
     lastName === "" ||
     email === "" ||
     password === "" ||
+    school === "" ||
     Boolean(emailError) ||
-    Boolean(passwordError);
+    Boolean(passwordError) ||
+    Boolean(schoolError);
 
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-    
-      // Extract form data
-      const data = new FormData(event.currentTarget);
-      const email = data.get("email");
-      const password = data.get("password");
-      const firstName = data.get("firstName");
-      const lastName = data.get("lastName");
-      const displayName = `${firstName} ${lastName}`.trim();
-    
-      try {
-        const response = await SignupApi(email, password, displayName);
-        if (response.status === 200) {
-          setLoggedIn(true);
-          navigate('/game');
-          onSignup(firstName);
-        } 
-      } catch (error) {
-        if (error.response.data.error.code === 'auth/email-already-in-use'){
-          alert('The email is already in use');
-        } else {
-          alert(`Unexpected error: ${error.message}`);
-        }
-        console.log(error);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const email = data.get("email");
+    const password = data.get("password");
+    const firstName = data.get("firstName");
+    const lastName = data.get("lastName");
+    const school = data.get("school");
+    const displayName = `${firstName} ${lastName}`.trim();
+
+    try {
+      const response = await SignupApi(email, password, displayName, school);
+      if (response.status === 200) {
+        setLoggedIn(true);
+        navigate("/game");
+        onSignup(firstName);
       }
-     
-    };
-    
+    } catch (error) {
+      if (error.response?.data?.error?.code === "auth/email-already-in-use") {
+        alert("The email is already in use");
+      } else {
+        alert(`Unexpected error: ${error.message}`);
+      }
+      console.log(error);
+    }
+  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -181,12 +183,7 @@ const Signup = ({ onSignup, setLoggedIn }) => {
             <Typography component="h1" variant="h5">
               Get Started Now
             </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 3 }}
-            >
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
@@ -252,10 +249,22 @@ const Signup = ({ onSignup, setLoggedIn }) => {
                   />
                 </Grid>
                 <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="school"
+                    label="School"
+                    name="school"
+                    autoComplete="school"
+                    value={school}
+                    onChange={handleSchoolChange}
+                    error={Boolean(schoolError)}
+                    helperText={schoolError}
+                  />
+                </Grid>
+                <Grid item xs={12}>
                   <FormControlLabel
-                    control={
-                      <Checkbox value="allowExtraEmails" color="primary" />
-                    }
+                    control={<Checkbox value="allowExtraEmails" color="primary" />}
                     label="I want to receive inspiration, marketing promotions and updates via email."
                   />
                 </Grid>
@@ -287,4 +296,5 @@ const Signup = ({ onSignup, setLoggedIn }) => {
     </ThemeProvider>
   );
 };
+
 export default Signup;

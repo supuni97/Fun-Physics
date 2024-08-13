@@ -4,31 +4,37 @@ import { getLeaderboardData } from "../API/leaderboardApi";
 
 export default function Board({ idToken }) {
   const [result, setResult] = useState([]);
-
+  const fetchData = async () => {
+    const response = await getLeaderboardData(idToken);
+    setResult(response.data.data);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await getLeaderboardData(idToken);
-      setResult(response.data.data);
-      console.log(result);
-    };
-
     fetchData();
   }, [idToken]);
 
   return (
-    <div className="board" style={{ marginLeft: "10vw", marginRight: "20vw" }}>
-      <h1 className="leaderboard">Leaderboard</h1>
+    <div style={styles.boardContainer}>
+      <h1 style={styles.leaderboardHeader}>LEADERBOARD</h1>
       <Profiles Leaderboard={sort(result)}></Profiles>
     </div>
   );
 }
 
 function sort(data) {
-  return data.sort((a, b) => {
-    if (a.score === b.score) {
-      return b.userScore - a.userScore;
-    } else {
-      return b.userScore - a.userScore;
-    }
-  });
+  return data.sort((a, b) => b.userScore - a.userScore);
 }
+
+const styles = {
+  boardContainer: {
+    padding: '20px',
+    width: '80%',
+    backgroundColor: '#FFFFF',
+    borderRadius: '10px',
+    textAlign: 'center',
+  },
+  leaderboardHeader: {
+    fontSize: '2rem',
+    fontWeight: 'bold',
+    color: '#E74C3C',
+  }
+};
