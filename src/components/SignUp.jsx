@@ -134,7 +134,7 @@ const Signup = ({ onSignup, setLoggedIn }) => {
       const response = await SignupApi(email, password, displayName, school);
       if (response.status === 200) {
         setLoggedIn(true);
-        navigate("/game");
+        navigate("/login");
         onSignup(firstName);
       }
     } catch (error) {
